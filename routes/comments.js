@@ -9,7 +9,7 @@ router.put('/comments/:commentId', updateComment);
 
 module.exports = router;
 //above is basic requirements for a router
-
+//dont do get but the next three
 function getCommentsForAPost(req, res, next){
   console.log('creating a comment');
   next();
