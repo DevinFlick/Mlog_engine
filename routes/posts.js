@@ -42,14 +42,38 @@ function createPost(req, res, next){
   });
 };
 function getAPost(req, res, next){
-  console.log('get a certain Post');
-  next();
+  Post.findOne({_id: req.params.postId}, req.body, function(err, foundPost){
+    if (err){
+      res.status(500).json({})
+    }else {
+      res.status(200).json({
+        post: foundPost
+      })
+    }
+  });
 };
 function deleteAPost(req, res, next){
-  console.log('delete a certain Post');
-  next();
+  Post.findOneAndRemove({_id:req.params.postId}, function(err, deletedPost){
+    if (err){
+      res.status(500).json({})
+    } else {
+      res.status(200).json({
+        msg: "deleted the post"
+      })
+    }
+  });
 };
 function updateAPost(req, res, next){
-  console.log('update a certain Post');
-  next();
+  Post.findOneAndUpdate({_id: req.params.postId},
+    req.body, function(err, oldPost){
+      if(err){
+        res.status(500).json({
+          msg: err
+        });
+      } else {
+        res.status(200).json({
+          oldPost: oldPost
+        });
+      }
+    });
 };

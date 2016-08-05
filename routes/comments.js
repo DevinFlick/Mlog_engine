@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Comment = require('../models/comment.js')
 
 router.get('/comments/:postId', getCommentsForAPost);
 router.post('/comments', createComment);
@@ -10,7 +11,7 @@ module.exports = router;
 //above is basic requirements for a router
 
 function getCommentsForAPost(req, res, next){
-  console.log('getting all of the comments');
+  console.log('creating a comment');
   next();
 }
 function createComment(req, res, next){
