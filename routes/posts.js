@@ -44,7 +44,9 @@ function createPost(req, res, next){
 function getAPost(req, res, next){
   Post.findOne({_id: req.params.postId}, req.body, function(err, foundPost){
     if (err){
-      res.status(500).json({})
+      res.status(500).json({
+        msg: err
+      })
     }else {
       res.status(200).json({
         post: foundPost
@@ -55,7 +57,9 @@ function getAPost(req, res, next){
 function deleteAPost(req, res, next){
   Post.findOneAndRemove({_id:req.params.postId}, function(err, deletedPost){
     if (err){
-      res.status(500).json({})
+      res.status(500).json({
+        msg: err
+      })
     } else {
       res.status(200).json({
         msg: "deleted the post"
