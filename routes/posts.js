@@ -1,19 +1,21 @@
-var express = require ('express');
+var express = require('express');
 var router = express.Router();
 var Post = require('../models/post.js');
 
 router.get('/posts', getPosts);
 router.post('/posts', createPost);
 router.get('/posts/:postId', getAPost);
-router.delete('/posts/:postId', deleteAPost);
 router.put('/posts/:postId', updateAPost);
+router.delete('/posts/:postId', deleteAPost);
 
 module.exports = router;
 
 function getPosts(req, res, next){
   Post.find({}, function(err, foundPosts){
     if (err){
-      res.status(500).json({})
+      res.status(500).json({
+        msg:err
+      })
     } else {
       res.status(200).json({
         posts: foundPosts
@@ -68,8 +70,7 @@ function deleteAPost(req, res, next){
   });
 };
 function updateAPost(req, res, next){
-  Post.findOneAndUpdate({_id: req.params.postId},
-    req.body, function(err, oldPost){
+  Post.findOneAndUpdate({_id: req.params.postId}, req.body, function(err, oldPost){
       if(err){
         res.status(500).json({
           msg: err

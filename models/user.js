@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var postSchema = new Schema ({
+var userSchema = new Schema ({
   firstName: {
     type: String,
     required: true,
@@ -18,6 +18,9 @@ var postSchema = new Schema ({
     type: String,
     required: true,
     unique: true,
+  },
+  signedUp:{
+    type: Date,
   },
 });
 
