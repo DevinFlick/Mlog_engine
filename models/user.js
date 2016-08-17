@@ -46,7 +46,7 @@ userSchema.methods.validPassword = function(password){
   return this.hash === hash;
 };
 
-userSchema.methods.generateJwt = function(){
+userSchema.methods.generateJwt = function(){ //generate"jott"
 
 };
 
