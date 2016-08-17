@@ -46,7 +46,7 @@ userSchema.methods.validPassword = function(password){
   return this.hash === hash;
 };
 
-userSchema.methods.generateJwt = function(){ //generate"jott"
+userSchema.methods.generateJwt = function(){ //generate"jott" jwt is Json Web Token --> base 64 several chunks to tell the db about auth user etc, JWT expire over a period of time that you can set, commonly accepted practice sessions and cookies are other things taht expire but JWTs are commonly accepted practice,
 
 };
 
